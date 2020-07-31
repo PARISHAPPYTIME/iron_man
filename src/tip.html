@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    main {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .tip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tip::after {
+      content: attr(data-tip);
+      display: none;
+      position: absolute;
+      padding: 6px 15px;
+      left: 50%;
+      bottom: 100%;
+      white-space: nowrap;
+      margin-bottom: 12px;
+      transform: translateX(-50%);
+      font-size: 12px;
+      background: #000;
+      color: #fff;
+      cursor: default;
+      border-radius: 4px;
+      transition: all 0.25s;
+    }
+
+    .tip::before {
+      content: " ";
+      transition: all 0.25s;
+      position: absolute;
+      display: none;
+      left: 50%;
+      bottom: 100%;
+      transform: translateX(-50%);
+      margin-bottom: 3px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 9px solid #000;
+    }
+
+    .tip:hover::after,
+    .tip:hover::before {
+      display: block;
+    }
+
+    .tip1 {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tip1::after {
+      content: attr(data-tip);
+      display: none;
+      position: absolute;
+      padding: 6px 15px;
+      left: calc(-100% - 24px);
+      top: 50%;
+      white-space: nowrap;
+      /* margin-right: 12px; */
+      transform: translateY(-50%);
+      font-size: 12px;
+      background: #000;
+      color: #fff;
+      cursor: default;
+      border-radius: 4px;
+      transition: all 0.25s;
+    }
+
+    .tip1::before {
+      content: " ";
+      transition: all 0.25s;
+      position: absolute;
+      display: none;
+      left: calc(-12px);
+      top: 50%;
+      transform: translateY(-50%);
+      /* margin-bottom: 3px; */
+      /* margin-right: 12px; */
+      width: 0;
+      height: 0;
+      border-left: 9px solid #000;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+    }
+
+    .tip1:hover::after,
+    .tip1:hover::before {
+      display: block;
+    }
+
+    .box {
+      padding: 20px 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="box">
+      <div class="tip1" data-tip="CSS伪类">CSS伪类</div>
+    </div>
+    <div class="box">
+      <div class="tip" data-tip="this is my name wayxswy">CSS伪类</div>
+    </div>
+    <div class="box">
+      <div class="tip" data-tip="CSS伪类">CSS伪类</div>
+    </div>
+    <div class="box">
+      <div class="tip" data-tip="this is my name wayxswy">CSS伪类</div>
+    </div>
+  </main>
+</body>
+
+</html>
