@@ -25,6 +25,11 @@ app.get("/404", (req, res) => {
     res.sendFile(path.join(__dirname, 'src', '404.html'));
 })
 
+// 允许下载单个文件
+app.get('/dl', (req, res) => {
+    res.download("./app.js");
+})
+
 // 将所有未定义的页面重定向到 404
 app.use(function (req, res) {
     res.redirect('/404');

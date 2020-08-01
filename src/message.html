@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404</title>
+    <title>Message</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
         main {
             width: 100%;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .msg {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            
         }
     </style>
 </head>
 <body>
     <main>
-        <img src="../public/svg/404.svg" alt="404" />
+        <div class="msg"></div>
     </main>
 </body>
 </html>
