@@ -9,7 +9,7 @@
         a {
             display: inline-block;
             text-decoration: none;
-            color: black;
+            color: white;
             font-size: 16px;
             line-height: 24px;
         }
@@ -19,6 +19,9 @@
             border: none;
             outline: none;
             padding: 10px 15px;
+            color: white;
+            background-color: #202020;
+            margin-right: 15px;
         }
 
         .row {
@@ -29,16 +32,51 @@
 
 <body>
     <h1>接口 0.0</h1>
-    <div class="row">
-        <button>测试接口</button> <a target="_blank" href="/test"> localhost:3010/test </a>
-    </div>
-    <div class="row">
-        <button>获取代码片段</button> <a target="_blank" href="/code/code1"> localhost:3010/code/code1 </a>
-    </div>
-    <div class="row"><button><a href="/h/tip">组件 -- tip 样式 </a></button></div>
-    <div class="row"><button><a href="/h/loading">页面 -- Loading </a></button></div>
-    <div class="row"><button><a href="/404">页面 -- 404 </a></button></div>
-    <div class="row"><button><a href="/open_cmd/vue ui">打开 vue ui 创建项目</a></button><button><a href="/open_cmd/node --version">node 版本</a></button></div>
+    <div class="row"><button><a target="_blank" href="/test"> 测试接口 </a></button> </div>
+    <div class="row"><button><a target="_blank" href="/code/code1"> 获取代码片段 </a></button></div>
+    <div class="row"><button><a target="_blank" href="/h/tip">组件 -- tip 样式 </a></button></div>
+    <div class="row"><button><a target="_blank" href="/h/loading">页面 -- Loading </a></button></div>
+    <div class="row"><button><a target="_blank" href="/404">页面 -- 404 </a></button></div>
+    <div class="row"><button><a target="_blank" href="/open_cmd/vue ui">打开 vue ui 创建项目</a></button><button><a
+                href="/open_cmd/node --version">node 版本</a></button></div>
+    <div class="row"><input id="file" type="file" type="上传图片"></div>
+    <div></div>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        file.onchange = function () {
+            // isHaveThing = true;
+            // $('.circular-loading').click();
+            var formData = new FormData();
+            formData.append('wenjian', this.files[0]);
+            $.ajax({
+                url: '/file/file',
+                type: 'POST',
+                async: false,
+                data: formData,
+                processData: false, // 使数据不做处理
+                contentType: false, // 不要设置Content-Type请求头
+                success: function (res) {
+                    console.log(res);
+                //     setTimeout(function () {
+                //         loading.triggerSuccess();
+                //         $('.zzz').append(
+                //             `
+                // <a target="_blank" class="btn btn-4" @click="show('${res.path}')">
+                //   <span class="thin">${res.path}</span>
+                // </a>
+                // `
+                //         )
+                //     }, 500)
+                },
+                error: function (response) {
+                    // console.log(response);
+                    // setTimeout(function () {
+                    //     loading.triggerFail();
+                    // }, 500)
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

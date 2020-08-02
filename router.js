@@ -1,9 +1,11 @@
-const express = require('express');
-const router = express.Router();
-const path = require('path');
-const fs = require('fs');
-const readLine = require('readline');
-const { exec } = require('child_process');
+const express = require('express'); // express
+const router = express.Router(); // 路由
+const path = require('path'); // 路径
+const fs = require('fs'); // 文件
+const readLine = require('readline'); // 一行一行读取代码
+const { exec } = require('child_process'); // 控制台
+
+const formidable = require('formidable'); //文件夹上传
 
 // 测试接口
 router.get("/test", (req, res) => {
@@ -56,6 +58,21 @@ router.get('/open_cmd/:id', (req, res) => {
             });
         }
     }
+})
+
+router.post("/file/:id", (req, res) => {
+    var id = req.params.id;
+    const form = new formidable.IncomingForm();
+    form.uploadDir = path.join(__dirname, "lib", id);
+    form.keepExtensions = true;
+    form.parse(req, (err, fields, files) => {
+        if (Object.keys(files).length != 0) {
+            fs.renameSync(files.wenjian.path, path.join(__dirname, "lib", id, files.wenjian.name));
+            res.send({
+                path: files.wenjian.name
+            })
+        }
+    })
 })
 
 module.exports = router;
