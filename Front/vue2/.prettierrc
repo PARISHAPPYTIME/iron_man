@@ -1,0 +1,6 @@
+{
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "none",
+    "no-multiple-empty-lines": [0, { "max": 100 }]
+}
