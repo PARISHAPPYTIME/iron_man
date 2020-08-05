@@ -62,23 +62,30 @@ router.get('/open_cmd/:id', (req, res) => {
 
 router.post("/upload-file", (req, res) => {
 
-    // res.writeHead(200, {
-    //     'Content-Type': 'application/json;charset=utf-8',
-    //     'Access-Control-Allow-Credentials': true,
-    //     'Access-Control-Allow-Origin': '*'
-    // })
-    // return res.end('data')
-
-    const form = new formidable.IncomingForm();
+    let form = new formidable.IncomingForm();
     form.uploadDir = path.join(__dirname, "lib/file");
     form.keepExtensions = true;
     form.parse(req, (err, fields, files) => {
         if (Object.keys(files).length != 0) {
             fs.renameSync(files.cxyFile.path, path.join(__dirname, "lib/file", files.cxyFile.name));
             res.send({
-                path: files.cxyFile.name
+                files: files
             })
         }
+    })
+})
+
+router.get("/upload-file-all", (req, res) => {
+    console.log(path.join(__dirname, "lib/file"))
+    fs.readdir(path.join(__dirname, "lib/file"), function (err, files) {
+        console.log(err, files)
+        if (err) {
+            console.log(err);
+            return res.send("目录不存在");
+        }
+        res.send({
+            files: files
+        })
     })
 })
 

@@ -6,20 +6,19 @@ const path = require('path');
 // 设置公共文件可以被访问
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
-// 设置跨域
-
 //设置跨域访问
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     res.header("X-Powered-By",' 3.2.1');
-    res.header("Content-Type", "application/json;charset=utf-8");
+    // res.header("Content-Type", "application/json;charset=utf-8"); // 设置了这一行，返回的页面将会变成《 纯文本 》内容返回到页面上
     next();
 });
 
 // 文件读取必须使用绝对位置--首页
 app.get('/', function (req, res) {
+    console.log(21);
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
