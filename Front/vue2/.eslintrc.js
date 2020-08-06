@@ -1,5 +1,5 @@
 module.exports = {
-  root: true,
+  root: false,
   parserOptions: {
     parser: 'babel-eslint',
     sourceType: 'module'
@@ -10,10 +10,12 @@ module.exports = {
     es6: true,
   },
   extends: ['plugin:vue/recommended', 'eslint:recommended'],
-
   // add your custom rules here
   //it is base on https://github.com/vuejs/eslint-config-vue
   rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'generator-star-spacing': 'off',
     "vue/max-attributes-per-line": [2, {
       "singleline": 10,
       "multiline": {
@@ -28,7 +30,7 @@ module.exports = {
     "vue/html-self-closing": ["error", {
         "html": {
           "void": "always",
-          "normal": "always",
+          "normal": "never",
           "component": "always"
         },
         "svg": "always",
@@ -57,10 +59,6 @@ module.exports = {
     'dot-location': [2, 'property'],
     'eol-last': 2,
     'eqeqeq': ["error", "always", {"null": "ignore"}],
-    'generator-star-spacing': [2, {
-      'before': true,
-      'after': true
-    }],
     'handle-callback-err': [2, '^(err|error)$'],
     'indent': [2, 2, {
       'SwitchCase': 1
@@ -81,7 +79,6 @@ module.exports = {
     'new-parens': 2,
     'no-array-constructor': 2,
     'no-caller': 2,
-    'no-console': 'off',
     'no-class-assign': 2,
     'no-cond-assign': 2,
     'no-const-assign': 2,
@@ -198,7 +195,6 @@ module.exports = {
     'yield-star-spacing': [2, 'both'],
     'yoda': [2, 'never'],
     'prefer-const': 2,
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'object-curly-spacing': [2, 'always', {
       objectsInObjects: false
     }],

@@ -5,6 +5,8 @@ const path = require('path');
 
 // 设置公共文件可以被访问
 app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/lib/file', express.static(path.join(__dirname, 'lib/file')));
+app.use('/static', express.static(path.join(__dirname, 'dist/static')));
 
 //设置跨域访问
 app.all('*', function(req, res, next) {
@@ -18,8 +20,8 @@ app.all('*', function(req, res, next) {
 
 // 文件读取必须使用绝对位置--首页
 app.get('/', function (req, res) {
-    console.log(21);
-    res.sendFile(path.join(__dirname, 'index.html'));
+    console.log(path.join(__dirname, 'dist', 'index.html'));
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 // 组件页面展示

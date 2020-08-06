@@ -24,3 +24,17 @@ export const getFiles = () => {
     })
   })
 }
+
+export const Filepath = (fileName) => {
+  return new Promise((resolve, reject) => {
+    console.log('http://localhost:3010/path/' + fileName)
+    axios.get('http://localhost:3010/path/' + fileName).then((res) => {
+      // const a = 1
+      // if (a === 1) {
+      resolve(res)
+      // } else {
+      //   reject(res)
+      // }
+    })
+  })
+}

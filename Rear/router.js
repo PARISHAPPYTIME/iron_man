@@ -78,14 +78,37 @@ router.post("/upload-file", (req, res) => {
 router.get("/upload-file-all", (req, res) => {
     console.log(path.join(__dirname, "lib/file"))
     fs.readdir(path.join(__dirname, "lib/file"), function (err, files) {
-        console.log(err, files)
         if (err) {
             console.log(err);
             return res.send("目录不存在");
         }
-        res.send({
-            files: files
+        let newFiles = [];
+        files.forEach(item => {
+            newFiles.push({
+                fileName: item,
+                path: path.join('/lib/file/' + item)
+            });
         })
+        res.send({
+            files: newFiles
+        })
+    })
+})
+let basePath = path.join(__dirname, 'lib/file/');
+router.get('/path/:id', (req, res)=> {
+    const fileName = req.params.id;
+    const filePath = path.join(basePath + fileName);
+    fs.stat(filePath, (err, stats) => {
+        if(err) throw err // 不存在
+        // console.log(2);
+        if(stats.isDirectory()){
+            // 是文件
+        }else{
+            res.json({
+                status: true,
+                filePath: filePath
+            });
+        }
     })
 })
 
