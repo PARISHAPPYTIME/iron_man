@@ -2,7 +2,11 @@
   <main>
     <div class="left">
       <div class="content item-group">
-        <div v-for="(item, index) in fileList" :key="index" class="item">{{ item }}</div>
+        <div
+          v-for="(item, index) in fileList"
+          :key="index"
+          class="item"
+        ><a :href="item.path" target="_blank">{{ item.fileName }}</a></div>
       </div>
     </div>
     <div class="right">
@@ -37,6 +41,12 @@ export default {
         this.fileList = res.data.files
         console.log(res)
       })
+    },
+    findFile(path) {
+      // window.open(filePath)
+      // console.log(path)
+      // window.open(path)
+      window.open(path)
     }
   }
 }
