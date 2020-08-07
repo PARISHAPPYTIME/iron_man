@@ -36,6 +36,10 @@ body {
   color: white;
   position: sticky;
   top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
   a {
     font-weight: bold;
     color: #ffffff;
