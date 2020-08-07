@@ -1,7 +1,7 @@
 <template>
   <div class="con">
     <slot name="icon"></slot>
-    <slot>这是个按钮</slot>
+    <slot>这是个按钮</slot>3
   </div>
 </template>
 
