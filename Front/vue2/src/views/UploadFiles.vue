@@ -2,23 +2,31 @@
   <main>
     <div class="left">
       <div class="content item-group">
-        <div
-          v-for="(item, index) in fileList"
-          :key="index"
-          class="item"
-        ><a :href="item.path" target="_blank">{{ item.fileName }}</a></div>
+        <div v-for="(item, index) in fileList" :key="index" class="item">
+          <a :href="item.path" target="_blank">{{ item.fileName }}</a>
+        </div>
       </div>
+      <MyInput type="password" value="qwe" @onInput="onInput" />
     </div>
     <div class="right">
       <h1>选择你需要上传的文件</h1>
       <input type="file" @change="bindUploadFile" />
+      <MyButton>
+        <template v-slot:default>这才是真正的按钮</template>
+      </MyButton>
     </div>
   </main>
 </template>
 <script>
+import MyInput from '../components/Input.vue'
+import MyButton from '../components/Button.vue'
 import { uploadFile, getFiles } from '../api/api'
 export default {
   name: 'UploadFiles',
+  components: {
+    MyInput,
+    MyButton
+  },
   data() {
     return {
       fileList: []
@@ -47,6 +55,9 @@ export default {
       // console.log(path)
       // window.open(path)
       window.open(path)
+    },
+    onInput(value) {
+      console.log(value)
     }
   }
 }

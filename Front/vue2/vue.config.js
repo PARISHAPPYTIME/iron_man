@@ -54,11 +54,11 @@ module.exports = {
             //     filter: [], // 需要过滤的入口文件
             //     enable: true // 发布代码前记得改回 false
       // }),
-      new webpack.ProvidePlugin({//引入jquery
-        $:"jquery",
-        jQuery:"jquery",
-        "windows.jQuery":"jquery"
-      })
+      // new webpack.ProvidePlugin({//引入jquery
+      //   $:"jquery",
+      //   jQuery:"jquery",
+      //   "windows.jQuery":"jquery"
+      // })
         ];
         if(process.env.NODE_ENV === 'production') { // 为生产环境修改配置...process.env.NODE_ENV !== 'development'
             config.plugins = [...config.plugins, ...pluginsPro];
