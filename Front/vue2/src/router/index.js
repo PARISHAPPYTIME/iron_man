@@ -11,12 +11,28 @@ const routes = [
     component: Home
   },
   {
-    path: '/UploadFiles',
+    path: '/uploadFiles',
     name: 'UploadFiles',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/UploadFiles.vue')
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/UploadFiles.vue')
+  },
+  {
+    path: '/toDoList',
+    name: 'toDoList',
+    component: () => import('../views/ToDoList.vue')
+  },
+  {
+    path: '/about',
+    name: 'toDoList',
+    component: () => import('../views/About.vue')
+  },
+  {
+    path: '/log',
+    name: 'toDoList',
+    component: () => import('../views/Log.vue')
   }
 ]
 

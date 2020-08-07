@@ -2,23 +2,26 @@
   <main>
     <div class="left">
       <div class="content item-group">
-        <div
-          v-for="(item, index) in fileList"
-          :key="index"
-          class="item"
-        ><a :href="item.path" target="_blank">{{ item.fileName }}</a></div>
+        <div v-for="(item, index) in fileList" :key="index" class="item">
+          <a :href="item.path" target="_blank">{{ item.fileName }}</a>
+        </div>
       </div>
     </div>
     <div class="right">
+      <MyTooltip />
       <h1>选择你需要上传的文件</h1>
       <input type="file" @change="bindUploadFile" />
     </div>
   </main>
 </template>
 <script>
+import MyTooltip from '../components/Tooltip.vue'
 import { uploadFile, getFiles } from '../api/api'
 export default {
   name: 'UploadFiles',
+  components: {
+    MyTooltip
+  },
   data() {
     return {
       fileList: []
@@ -68,9 +71,9 @@ main {
     .content {
       width: 710px;
       min-height: 100px;
-      border-radius: 12px;
-      border: 2px solid #a1a1a1;
-      padding: 15px 0;
+      // border-radius: 12px;
+      // border: 1px solid #2c3e50;
+      overflow: hidden;
       .item {
         height: 42px;
         text-align: left;
@@ -79,21 +82,19 @@ main {
         padding: 0px 15px;
         position: relative;
         cursor: pointer;
+        a {
+          font-weight: bold;
+          color: #2c3e50;
+          text-decoration: none;
+        }
         &:hover {
-          background-color: #eeeeee;
+          background-color: #2c3e50;
+          a {
+            color: white;
+          }
         }
         &:not(:last-child) {
-          border-bottom: 2px solid rgba(255, 255, 255, 0);
-          &::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: -2px;
-            width: calc(100% - 30px);
-            height: 2px;
-            background-color: #a1a1a1;
-          }
+          border-bottom: 1px solid #2c3e50;
         }
       }
     }
