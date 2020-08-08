@@ -1,27 +1,44 @@
 <template>
-  <div class="con" data-tip="提示内容在这里">
+  <div class="scoped-my-tooptip" :class="[theme]" data-tip="提示内容在这里">
     <slot>默认内容</slot>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'MyTooptip',
+  inject: ['theme'],
+  created () {
+    console.log(this.theme, 'theme')
+  }
+}
 </script>
 
 <style lang="less" scoped>
-.con {
-  display: inline-block;
+.scoped-my-tooptip {
+  display: inline-flex;
   position: relative;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 38px;
   height: 38px;
+  cursor: pointer;
   padding: 0px 15px;
+  &.dark {
+    &::after {
+      background-color: white;
+      color: black;
+    }
+    &::before {
+      border-top: 9px solid #fff;
+    }
+  }
 
   &::after {
     content: attr(data-tip);
-    display: none;
+    opacity: 0;
+    pointer-events: none;
     position: absolute;
-    padding: 6px 15px;
+    padding: 2px 15px;
     left: 50%;
     bottom: 100%;
     white-space: nowrap;
@@ -39,7 +56,9 @@ export default {}
     content: ' ';
     transition: all 0.25s;
     position: absolute;
-    display: none;
+    // display: none;
+    opacity: 0;
+    pointer-events: none;
     left: 50%;
     bottom: 100%;
     transform: translateX(-50%);
@@ -53,7 +72,7 @@ export default {}
 
   &:hover::after,
   &:hover::before {
-    display: block;
+    opacity: 1;
   }
 }
 </style>

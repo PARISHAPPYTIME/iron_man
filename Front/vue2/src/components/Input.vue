@@ -13,11 +13,11 @@ export default {
       default: ''
     }
   },
-  data() {
+  data () {
     return {}
   },
   methods: {
-    onInput(e) {
+    onInput (e) {
       this.$emit('onInput', e.target.value)
     }
   }
@@ -32,8 +32,10 @@ export default {
     outline: none;
     height: 38px;
     padding: 0 15px;
-    border: 1px solid green;
-    border-radius: 10px;
+    border: 1px solid #2c3e50;
+    color: #2c3e50;
+    font-size: 16px;
+    border-radius: 2px;
   }
 }
 </style>

@@ -1,7 +1,5 @@
 <template>
   <div class="con">
-    <h2>我们接下来将会做 ……</h2>
-    <h3>属于我们自己的ui框架</h3>
     <ol>
       <li>
         <h4>
@@ -13,6 +11,12 @@
         <h4>
           <span>用户实现登录注册</span>
           <span>2020 年 08 月 07 日</span>
+        </h4>
+      </li>
+      <li>
+        <h4>
+          <span>实现界面的暗黑模式</span>
+          <span>2020 年 08 月 08 日</span>
         </h4>
       </li>
     </ol>
